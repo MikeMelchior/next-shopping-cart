@@ -1,11 +1,12 @@
+import { italiana } from "@/utils/fonts";
 
-import Link from "next/link";
-
-export default async function Home() {
+export default function Home() {
 
 	return (
-        <main>
-            <Link href={'/shop'}> Visit the Shop </Link>
+        <main className="text-8xl">
+            <div className="bg-clothes h-fill bg-cover bg-center flex justify-center items-center">
+                <h1 className={`${italiana.className} text-platinum pb-24`}>Fake Store</h1>
+            </div>
         </main>
     );
 }
