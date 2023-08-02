@@ -11,10 +11,22 @@ module.exports = {
         colors: {
             'steel-blue': '#3F7CAC',
             'platinum': '#E7E7E7',
-            'rich-black': '#0F1A20'
+            'rich-black': '#000A10'
         },
         gridTemplateColumns: {
-            'auto-fill': 'repeat(auto-fill,minmax(300px,1fr))'
+            'auto-fill': 'repeat(auto-fit,minmax(300px,1fr))'
+        },
+        backgroundImage: {
+            'clothes': "url('../public/clothes.jpg')",
+            'clothes1': "url('../public/clothes1.jpg')",
+            'clothes2': "url('../public/clothes2.jpg')",
+            'dark': "linear-gradient(90deg, rgba(200, 200, 200), rgba(120, 120, 120) )",
+        },
+        height: {
+            'fill': 'calc(100vh - 80px)'
+        },
+        minHeight: {
+            'fill': 'calc(100vh - 80px)'
         }
     },
   },
