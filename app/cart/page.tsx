@@ -16,20 +16,22 @@ const Page = () => {
     } = React.useContext(CartContext) as CartContextType
 
     return (
-        <div className='p-12 flex'>
-            <div>
-                <div className='p-12'>
-                    <h1 className='text-3xl'>Your Cart</h1> 
-                    <p>{itemCount}</p>
+        <main className='flex justify-center'>
+            <div className='p-6 md:p-12 lg:p-24 md:w-[70vw]'>
+                <div className='flex flex-col gap-6'>
+                    <div className='px-12 pb-6 flex justify-between text-3xl font-bold'>
+                        <h1>Your Cart</h1> 
+                        <p>{itemCount} {itemCount === 1 ? 'Item' : 'Items'}</p>
+                    </div>
+                    {cart.map((item: Product) => {
+                        return (
+                            <CartItem key={item.id} item={item} />
+                        )
+                    })}
                 </div>
-                {cart.map((item: Product) => {
-                    return (
-                        <CartItem key={item.id} item={item} />
-                    )
-                })}
             </div>
-            
-        </div>
+        </main>
+        
     )
 }
 

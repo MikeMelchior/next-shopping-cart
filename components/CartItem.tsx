@@ -3,25 +3,37 @@ import { CartContextType } from '@/utils/types/CartContext'
 import { Product } from '@/utils/types/Product'
 import Image from 'next/image'
 import React from 'react'
+import QuantityWidget from './QuantityWidget'
 
 
 const CartItem = ( { item }: { item: Product }) => {
 
-    const { deleteProductFromCart } = React.useContext(CartContext) as CartContextType
-    
+    const { deleteProductFromCart, addItemToCart, removeItemFromCart } = React.useContext(CartContext) as CartContextType
+
     return (
         <div key={item.id} className='border-2 p-12 w-full flex gap-12 text-xl rounded-md'>
             <Image src={item.image} alt='' width={200} height={200} className='w-[100px] h-[100px]'/>
-            <p>{item.title}</p>
-            {item.quantity ? <p>Quantity: {item.quantity}</p> : <p>Quantity: 1</p>}
-            <button 
-                className='px-2 py-4 border-2 bg-red-300 text-3xl ml-auto'
-                onClick={() => {
-                    deleteProductFromCart(item)
-                }}
-            > 
-                Delete
-            </button>
+            
+            <div className='w-full flex flex-col'>
+                <div className='flex justify-between'>
+                    <p className='font-bold'>{item.title}</p>
+                    <p>${item.quantity * item.price}</p>
+                </div>
+                <div className='mt-auto flex justify-between'>
+                    <QuantityWidget product={item} count={item.quantity}/>
+                    <button 
+                        className='text-red-500 ml-auto mt-auto bg-pink-200 h-fit py-1 px-4 rounded-xl hover:animate-pulse'
+                        onClick={() => {
+                            deleteProductFromCart(item)
+                        }}
+                    > 
+                        Remove
+                    </button>
+                </div>
+                
+            </div>
+            
+           
         </div>
     )
 }
