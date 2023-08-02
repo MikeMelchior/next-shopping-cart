@@ -41,7 +41,6 @@ const CartProvider = ( { children }: { children: React.ReactNode}) => {
     function removeItemFromCart(item: Product) {
         let newCartItems;
 
-        if (item.quantity === 1) deleteProductFromCart(item);
         newCartItems = cart.map((i: Product) => {
             if (i.id === item.id) {
                 i.quantity--;
