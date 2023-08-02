@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import Rating from '@mui/material/Rating'
 import { CartContext } from '@/context/CartContext'
 import { CartContextType } from '@/utils/types/CartContext'
+import QuantityWidget from './QuantityWidget'
 
 
 
@@ -43,29 +44,7 @@ const ProductCard = ( { product }: { product: Product}) => {
                     </div>
                     
                 : 
-                    <div className='flex rounded-xl text-lg'>
-                        <button 
-                        className='border border-steel-blue px-4 text-2xl text-steel-blue hover:bg-blue-200 rounded-l-xl'
-                            onClick={() => {
-                                setCount(prev => prev - 1);
-                                removeItemFromCart(product);
-                            }}
-                        >
-                            -
-                        </button>
-                        <p className='py-1 px-4 border-t border-b border-steel-blue'>
-                            {count}
-                        </p>
-                        <button 
-                            className='border border-steel-blue px-4 text-2xl text-steel-blue hover:bg-blue-200 rounded-r-xl'
-                            onClick={() => {
-                                setCount(prev => prev + 1);
-                                addItemToCart(product);
-                            }}
-                        >
-                            +
-                        </button>
-                    </div>
+                    <QuantityWidget product={product} count={count} />
             }
             <div className='flex flex-col'>
                 <p className='font-bold text-center'>${product.price}</p>
