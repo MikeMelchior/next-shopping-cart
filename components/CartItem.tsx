@@ -17,7 +17,7 @@ const CartItem = ( { item }: { item: Product }) => {
             <div className='w-full flex flex-col'>
                 <div className='flex justify-between'>
                     <p className='font-bold'>{item.title}</p>
-                    <p>${item.quantity * item.price}</p>
+                    <p>${(item.quantity * item.price).toFixed(2)}</p>
                 </div>
                 <div className='mt-auto flex justify-between'>
                     <QuantityWidget product={item} count={item.quantity}/>
