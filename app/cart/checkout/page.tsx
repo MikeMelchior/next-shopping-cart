@@ -49,7 +49,7 @@ const Page = () => {
                     </div>
                     <div className='flex justify-between border-t-2 border-rich-black pt-6'>
                         <p>Total:</p>
-                        <p>{(subtotal + subtotal * 0.13).toFixed(2)}</p>
+                        <p>${(subtotal + subtotal * 0.13).toFixed(2)}</p>
                     </div>
                 </div>
             </div>
