@@ -11,7 +11,7 @@ const Page = () => {
     const { cart, subtotal } = React.useContext(CartContext) as CartContextType
 
     return (
-        <main className='bg-dark flex flex-col items-center p-4 md:p-12 gap-12'>
+        <main className='bg-dark min-h-fill flex flex-col items-center p-4 md:p-12 gap-12'>
             <button className='border border-black w-1/6 min-w-[250px] p-2 rounded-md bg-slate-800 text-platinum text-xl font-bold'>
                 <Link href={'/cart'}>
                     {`<< `}Return to Cart
