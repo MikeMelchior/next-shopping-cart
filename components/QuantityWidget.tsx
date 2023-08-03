@@ -4,14 +4,15 @@ import { Product } from '@/utils/types/Product'
 import React from 'react'
 
 
-const QuantityWidget = ( { product, count }: { product: Product, count: number}) => {
+const QuantityWidget = ( { product }: { product: Product }) => {
 
-    const { removeItemFromCart, addItemToCart } = React.useContext(CartContext) as CartContextType
+    const { removeItemFromCart, addItemToCart, cart } = React.useContext(CartContext) as CartContextType
     return (
         <div className='flex rounded-xl text-lg'>
             <button 
                 className='border border-r-0 border-steel-blue px-4 text-2xl text-steel-blue hover:bg-blue-200 rounded-l-xl disabled:opacity-30 disabled:hover:bg-transparent'
-                disabled={count === 1}
+                disabled={cart.find((i: Product) => i.id === product.id)?.quantity === 1}
+
                 onClick={() => {
                     removeItemFromCart(product);
                 }}
@@ -19,7 +20,7 @@ const QuantityWidget = ( { product, count }: { product: Product, count: number})
                 -
             </button>
             <p className='py-1 px-4 border border-steel-blue'>
-                {count}
+                {cart.find((i: Product) => i.id === product.id)?.quantity}
             </p>
             <button 
                 className='border border-l-0 border-steel-blue px-4 text-2xl text-steel-blue hover:bg-blue-200 rounded-r-xl'

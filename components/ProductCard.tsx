@@ -1,7 +1,7 @@
 'use client'
 import { Product } from '@/utils/types/Product'
 import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Rating from '@mui/material/Rating'
 import { CartContext } from '@/context/CartContext'
 import { CartContextType } from '@/utils/types/CartContext'
@@ -10,13 +10,7 @@ import QuantityWidget from './QuantityWidget'
 
 
 const ProductCard = ( { product }: { product: Product}) => {
-    const [count, setCount] = useState(0)
-
-    useEffect(() => {
-        if (product.quantity) setCount(product.quantity)
-    }, [product.quantity])
-
-    const { addItemToCart, removeItemFromCart } = React.useContext(CartContext) as CartContextType
+    const { addItemToCart, itemInCart } = React.useContext(CartContext) as CartContextType
 
     return (
         <div className='h-[475px] min-w-[300px] w-[25vw] max-w-[400px] place-self-center border-2 border-black flex flex-col justify-center items-center gap-6 p-6 bg-platinum text-rich-black text-center rounded-md'>
@@ -29,22 +23,20 @@ const ProductCard = ( { product }: { product: Product}) => {
             />
             <p className='mb-auto'>{product.title}</p>
             {
-                count === 0
+                itemInCart(product)
                 ? 
+                    <QuantityWidget product={product}/> 
+                : 
                     <div>
                         <button 
                             className='border-2 bg-green-500 py-2 px-4 font-bold'
                             onClick={() => {
-                                setCount(1)
                                 addItemToCart(product);
                             }}
                         >
                             Add to Cart
                         </button>
-                    </div>
-                    
-                : 
-                    <QuantityWidget product={product} count={count} />
+                    </div> 
             }
             <div className='flex flex-col'>
                 <p className='font-bold text-center'>${product.price}</p>
