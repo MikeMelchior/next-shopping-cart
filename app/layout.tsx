@@ -3,7 +3,9 @@ import type { Metadata } from 'next'
 import { roboto } from '@/utils/fonts'
 import { GlobalProvider } from './GlobalProvider'
 import Navbar from '@/components/Navbar'
-
+import '@fortawesome/fontawesome-svg-core'
+import { config } from '@fortawesome/fontawesome-svg-core'
+config.autoAddCss = false
 
 export const metadata: Metadata = {
   title: 'Fake Store',
