@@ -20,7 +20,7 @@ module.exports = {
             'clothes': "url('../public/clothes.jpg')",
             'clothes1': "url('../public/clothes1.jpg')",
             'clothes2': "url('../public/clothes2.jpg')",
-            'dark': "linear-gradient(90deg, rgba(200, 200, 200), rgba(120, 120, 120) )",
+            'dark': "linear-gradient(rgba(200, 200, 200), rgba(120, 120, 120) )",
         },
         height: {
             'fill': 'calc(100vh - 80px)'
